@@ -1,57 +1,42 @@
-import { Box, Text, Image, Badge,Button} from "@chakra-ui/react";
+import { Box, Text, Image, Badge, Button } from "@chakra-ui/react";
 import { Navbar } from "../../Components/Navbar";
-import { selectService } from "../../dataBase/SalonForWomen";
-import { packages } from "../../dataBase/SalonForWomen";
+import { selectService, packages } from "../../dataBase/SalonForWomen";
 import { AccordionTag } from "../../Components/Accordion";
 import { useEffect, useState } from "react";
-import { CartComponent } from "../../Components/CartComponent";
+import { CartComponent } from "../../payment/CartComponent";
 
 export function SalonForWomen() {
+  const [cart, setCart] = useState(() => {
+    const storedCart = localStorage.getItem('newCart');
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
 
-let [cart,setCart]=useState(()=>{
-    let storeToCart=localStorage.getItem('newCart');
-    return storeToCart?JSON.parse(storeToCart):[]
-})
-let getItemFromCart=JSON.parse(localStorage.getItem('newCart'))
+  const handleAddToCart = (ele) => {
+    setCart((prevCart) => [...prevCart, ele]);
+  };
 
-console.log(getItemFromCart)
+  useEffect(() => {
+    localStorage.setItem('newCart', JSON.stringify(cart));
+  }, [cart]);
 
-function handleAddtoCart(ele){
-setCart([...cart,ele])
-
-}
-
-useEffect(()=>{
-    function sendingToCart(){
-      return   localStorage.setItem('newCart',JSON.stringify(cart))
-    }
-    sendingToCart()
-    return()=>{
-         window.removeEventListener('beforeunload',sendingToCart)
-    }
-  
-
-},[cart])
   return (
     <>
       <Navbar />
       <Box
-      id="Box"
-        display={{base:'grid',lg:'flex'}}
-        gridTemplateColumns={{base:'1fr',lg:'repeat(2,1fr)'}}
-       
-        mt="100px"
-        gap="10px"
+        id="Box"
+        display={{ base: 'block', lg: 'flex' }}
+        mt={{ base: '50px', lg: '100px' }}
+        gap={{ base: '5px', lg: '10px' }}
         px={{ base: 4, md: 8 }}
       >
         <Box flex={{ base: "1", lg: "0 0 30%" }} p={2}>
           <Text
-            fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+            fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
             fontWeight="bold"
             mb={{ base: 4, md: 8 }}
             color="gray.700"
           >
-            Salon Prime
+            Salon For Women
           </Text>
           <Box
             display="grid"
@@ -91,54 +76,76 @@ useEffect(()=>{
             ))}
           </Box>
         </Box>
-        <Box alignItems="center">
-  <Image
-    src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_category/w_829,dpr_2,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/luminosity/1690564871238-9984f8.jpeg"
-    borderRadius="md"
-    boxShadow="md"
-    w={{ base: "100%", lg: "auto" }}
-    maxW="100%"
-    objectFit="cover"
-  />
-  <Box display='flex' >
-
-  
-  <Box p={5} overflowY="auto" height="400px" marginTop="50px">
-    {packages.map((ele, i) => (
-      <Box key={i} borderRadius="md" bg="white" boxShadow="md" p={4} mb={4}>
-        <Badge colorScheme="green" mb={2}>
-          PACKAGE
-        </Badge>
-        <Box display='flex' justifyContent='space-between'>
-        <Text fontSize="2xl" fontWeight="500" mb={2}>
-          {ele.title}
-        </Text> 
-        <Button  colorScheme="teal"
-  size="lg"
-  borderRadius="md"
-  boxShadow="md"
-  _hover={{ boxShadow: "lg" }} onClick={()=>handleAddtoCart(ele)}>Add to Cart</Button>
+        <Box flex="1"
+  alignItems="center"
+  overflowY="scroll"
+  height={{ base: '900px', md: '1000px' }}
+  css={{
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+    '-ms-overflow-style': 'none',  
+    'scrollbar-width': 'none',  
+}}>
+          <Image
+            src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_category/w_829,dpr_2,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/luminosity/1690564871238-9984f8.jpeg"
+            borderRadius="md"
+            boxShadow="md"
+            w="100%"
+            maxW={{ base: "100%", lg: "auto" }}
+            objectFit="cover"
+          />
+          <Box display="flex" flexDirection={{ base: "column", lg: "row" }} mt={{ base: 4, lg: 8 }}>
+            <Box p={5}  flex="1"
+  alignItems="center"
+  overflowY="scroll"
+  height={{ base: '500px', md: '600px' }}
+  css={{
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+    '-ms-overflow-style': 'none',  
+    'scrollbar-width': 'none',  
+}}>
+              {packages.map((ele, i) => (
+                <Box key={i} borderRadius="md" bg="white" boxShadow="md" p={4} mb={4}>
+                  <Badge colorScheme="green" mb={2}>
+                    PACKAGE
+                  </Badge>
+                  <Box display='flex' justifyContent='space-between'>
+                    <Text fontSize="2xl" fontWeight="500" mb={2}>
+                      {ele.title}
+                    </Text>
+                    <Button
+                      variant='ghost'
+                      colorScheme="teal"
+                      size="lg"
+                      borderRadius="md"
+                      boxShadow="md"
+                      _hover={{ boxShadow: "lg" }}
+                      onClick={() => handleAddToCart(ele)}
+                    >
+                      Add to Cart
+                    </Button>
+                  </Box>
+                  <Text fontWeight="500" mb={2}>
+                    ₹{ele.price.toLocaleString()}
+                  </Text>
+                  <Text>{ele.time}</Text>
+                  <Text color='grey' mb={2}>{ele.service?.waxing}</Text>
+                  <Text color='grey' mb={2}>{ele.service?.Facial}</Text>
+                  <Text color='grey' mb={2}>{ele.service?.faceCleansing}</Text>
+                  <Text color='grey' mb={2}>{ele.service?.pedicure}</Text>
+                  <Text color='grey' mb={2}>{ele.service?.facialHairRemoval}</Text>
+                  <AccordionTag />
+                </Box>
+              ))}
+            </Box>
+            <CartComponent cart={cart} setCart={setCart} />
+          </Box>
         </Box>
-        <Text fontWeight="500" mb={2}>
-          ₹{ele.price.toLocaleString()}
-        </Text>
-        <Text mb={2}>{ele.service?.waxing}</Text>
-        
-        <Text mb={2}>{ele.service?.Facial}</Text>
-        
-        <Text mb={2}>{ele.service?.faceCleansing}</Text>
-        <Text mb={2}>{ele.service?.pedicure}</Text>
-        <Text mb={2}>{ele.service?.facialHairRemoval}</Text>
-        <AccordionTag/>
       </Box>
-    ))}
-  </Box>
-  
-<CartComponent getItemFromCart={getItemFromCart} handleAddtoCart={handleAddtoCart}/>
-  
-  </Box>
-</Box>
-</Box>
     </>
   );
 }
+

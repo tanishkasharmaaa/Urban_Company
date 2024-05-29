@@ -1,24 +1,23 @@
-import { Box, Text, Image, Badge, Button, ListItem,List } from "@chakra-ui/react";
+import { Box, Text, Image, Badge, Button } from "@chakra-ui/react";
 import { Navbar } from "../../Components/Navbar";
 import { AccordionTag } from "../../Components/Accordion";
 import { useEffect, useState } from "react";
+import { selectSofaService, sofaPackage } from "../../dataBase/sofa";
+import { CartComponentSofa } from "../../payment/CartComponentSofa";
 
-import { salonForKidMenPackage, selectSalonForKidsMen } from "../../dataBase/salonForKids&Men";
-import { CartComponentSalonForKidMen } from "../../payment/CartComponentSalonForKidMen";
-
-export function SalonForKidMen() {
-  const [salonForKidMenCart, setSalonForKidMenCart] = useState(() => {
-    const storedCart = localStorage.getItem('newSalonForKidMen');
+export function Sofa() {
+  const [sofaCart, setSofaCart] = useState(() => {
+    const storedCart = localStorage.getItem('newSofaCart');
     return storedCart ? JSON.parse(storedCart) : [];
   });
 
   const handleAddToCart = (ele) => {
-    setSalonForKidMenCart((prevCart) => [...prevCart, ele]);
+    setSofaCart((prevCart) => [...prevCart, ele]);
   };
 
   useEffect(() => {
-    localStorage.setItem('newSalonForKidMen', JSON.stringify(salonForKidMenCart));
-  }, [salonForKidMenCart]);
+    localStorage.setItem('newSofaCart', JSON.stringify(sofaCart));
+  }, [sofaCart]);
 
   return (
     <>
@@ -36,7 +35,7 @@ export function SalonForKidMen() {
             mb={{ base: 4, md: 8 }}
             color="gray.700"
           >
-            Salon Prime
+            Sofa Cleaning
           </Text>
           <Box
             display="grid"
@@ -46,7 +45,7 @@ export function SalonForKidMen() {
             }}
             gap={4}
           >
-            {selectSalonForKidsMen.map((ele, i) => (
+            {selectSofaService.map((ele, i) => (
               <Box
                 key={i}
                 alignItems="center"
@@ -76,7 +75,8 @@ export function SalonForKidMen() {
             ))}
           </Box>
         </Box>
-        <Box 
+        <Box
+          
   flex="1"
   alignItems="center"
   overflowY="scroll"
@@ -87,14 +87,13 @@ export function SalonForKidMen() {
     },
     '-ms-overflow-style': 'none',  
     'scrollbar-width': 'none',  
-}}>
-          <Image
-            src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_category/w_374,dpr_2,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/luminosity/1707111431967-1eae92.jpeg"
-            borderRadius="md"
-            boxShadow="md"
+}}
+        >
+          <Image 
+            src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_category/w_829,dpr_2,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/luminosity/1695987133610-bd4a37.jpeg"
             w="100%"
-            maxW={{ base: "100%", lg: "auto" }}
-            objectFit="cover"
+            borderRadius="md"
+            mb={4}
           />
           <Box display="flex" flexDirection={{ base: "column", lg: "row" }} mt={{ base: 4, lg: 8 }}>
             <Box p={5}  flex="1"
@@ -108,47 +107,55 @@ export function SalonForKidMen() {
     '-ms-overflow-style': 'none',  
     'scrollbar-width': 'none',  
 }}>
-              {salonForKidMenPackage.map((ele, i) => (
+              {sofaPackage.map((ele, i) => (
                 <Box key={i} borderRadius="md" bg="white" boxShadow="md" p={4} mb={4}>
                   <Badge colorScheme="green" mb={2}>
                     PACKAGE
                   </Badge>
-                  <Box display='flex' justifyContent='space-between'>
-                    <Text fontSize="2xl" fontWeight="500" mb={2}>
-                      {ele.title}
-                    </Text>
-                    <Button
-                      colorScheme="teal"
-                      variant='ghost'
-                      size="lg"
-                      borderRadius="md"
-                      boxShadow="md"
-                      _hover={{ boxShadow: "lg" }}
-                      onClick={() => handleAddToCart(ele)}
-                    >
-                      Add to Cart
-                    </Button>
+                  <Box display="flex" justifyContent="space-between" alignItems="center">
+                    <Box flex="1">
+                      <Text fontSize={{ base: "lg", md: "xl", lg: "2xl" }} fontWeight="500" mb={2}>
+                        {ele.title}
+                      </Text>
+                      <Text fontWeight="500" mb={2}>
+                        ₹{ele.price.toLocaleString()}
+                      </Text>
+                      <Text mb={2}>
+                        {ele.cover}
+                      </Text>
+                      <AccordionTag />
+                    </Box>
+                    <Box textAlign="center" ml={4}>
+                      <Image 
+                        width={{ base: '60px', md: '80px', lg: '100px' }} 
+                        src={ele.image} 
+                        mb={2} 
+                        borderRadius="md"
+                        boxShadow="md"
+                      />
+                      <Button
+                        colorScheme="teal"
+                        variant='solid'
+                        size="md"
+                        borderRadius="md"
+                        boxShadow="md"
+                        _hover={{ boxShadow: "lg" }}
+                        onClick={() => handleAddToCart(ele)}
+                      >
+                        Add to Cart
+                      </Button>
+                    </Box>
                   </Box>
-                  <Text fontWeight="500" mb={2}>
-                    ₹{ele.price.toLocaleString()}
-                  </Text>
-                  <Text>{ele.time}</Text>
-<List>
-                  <ListItem color='grey' mb={2}>{ele.service?.pedicure}</ListItem>
-                  <ListItem color='grey' mb={2}>{ele.service?.Shave_beard}</ListItem>
-                  <ListItem color='grey' mb={2}>{ele.service?.color}</ListItem>
-                  <ListItem color='grey' mb={2}>{ele.service?.haircut}</ListItem>
-
-                  <ListItem  color='grey'mb={2}>{ele.service?.detan}</ListItem>
-                 </List> 
-                  <AccordionTag />
                 </Box>
               ))}
             </Box>
-            <CartComponentSalonForKidMen cart={salonForKidMenCart} setCart={setSalonForKidMenCart} />
+            <Box flex={{ base: "1", lg: "0 0 30%" }} mt={{ base: 4, lg: 0 }} ml={{ lg: 4 }}>
+              <CartComponentSofa cart={sofaCart} setCart={setSofaCart} />
+            </Box>
           </Box>
         </Box>
       </Box>
     </>
   );
 }
+

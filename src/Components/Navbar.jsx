@@ -66,7 +66,7 @@ export function Navbar() {
       <Box 
         bg='white' 
         w='100%' 
-        p={{ base: 3, md: 5 }} 
+        p={{ base: 2, md: 5 }} 
         color='black' 
         display='flex' 
         flexDirection={{ base: 'column', md: 'row' }} 
@@ -83,19 +83,20 @@ export function Navbar() {
           </Link>
         </Box>
         <Box 
-          display='flex' 
-          flexDirection={{ base: 'column', md: 'row' }} 
+          display={{base:'flex',md:'flex',lg:'flex'}} 
+          flexDirection={{ base: 'row', md: 'row' }} 
           justifyContent='space-around' 
           alignItems='center' 
           w={{ base: '100%', md: '60%' }} 
         >
-          <SelectTag />
-          <Input onClick={() => onOpen()}
+          <Box><SelectTag /></Box>
+          <Box><Input onClick={() => onOpen()}
             placeholder="Search here..." 
             mx={{ base: 0, md: 3 }} 
             w={{ base: '100%', md: '300px' }} 
             mb={{ base: 3, md: 0 }}
-          />
+          /></Box>
+          
         </Box>
         <Box>
           {isLoggedIn === '' ? (

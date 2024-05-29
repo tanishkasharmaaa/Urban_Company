@@ -5,7 +5,7 @@ export function SelectTag({name,handleChange}){
         name={name}
       color='gray' 
       placeholder="Select a location" 
-      w={{ base: '100%', md: '300px' }} 
+      w={{ base: '100%', md: 'auto' }} 
       mb={{ base: 3, md: 0 }}
       onChange={handleChange}
     >

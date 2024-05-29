@@ -1,13 +1,13 @@
-import { Box, Text, Button, Badge, Image, Input, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, ModalBody } from "@chakra-ui/react"
+import { Box, Text, Button, Badge, Image, Input, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalFooter, ModalBody } from "@chakra-ui/react";
 import { AccordionTag } from '../Components/Accordion';
-import { SelectTag } from '../Components/Select'
+import { SelectTag } from '../Components/Select';
 import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { LoginModal } from "../Components/LoginModal";
 import { useNavigate } from "react-router-dom";
 
-export function CartSalonForWomen() {
-  const [getSalonForWomen, setGetSalonForWomen] = useState([]);
+export function CartRefrigrator() {
+  const [getRefrigrator, setGetRefrigrator] = useState([]);
   const [auth, setAuth] = useState(null);
   const [display, setDisplay] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(() => JSON.parse(localStorage.getItem('matched')) || '');
@@ -25,9 +25,9 @@ export function CartSalonForWomen() {
 
   useEffect(() => {
     const fetchData = () => {
-      const salonData = JSON.parse(localStorage.getItem('newCart')) || [];
+      const refrigrator = JSON.parse(localStorage.getItem('newRefrigratorCart')) || [];
       const authData = JSON.parse(localStorage.getItem('matched'));
-      setGetSalonForWomen(salonData);
+      setGetRefrigrator(refrigrator);
       setAuth(authData);
     };
 
@@ -53,7 +53,6 @@ export function CartSalonForWomen() {
     if (!display) {
       setDisplay(true);
       onLoginOpen();
-     
     } else {
       setDisplay(false);
     }
@@ -65,9 +64,9 @@ export function CartSalonForWomen() {
   }
 
   function handleProceed() {
-    if (getSalonForWomen.length === 0) {
+    if (getRefrigrator.length === 0) {
       alert('Your cart is empty. Please add services to proceed.');
-     navigate('/SalonForWomen')
+      navigate('/Refrigerator');
     }
 
     if (input.location !== '' && input.houseNo !== '' && input.landmark !== '' && input.street !== '') {
@@ -86,9 +85,9 @@ export function CartSalonForWomen() {
   }
 
   function handleDelete(index) {
-    const updatedCart = getSalonForWomen.filter((_, i) => i !== index);
-    setGetSalonForWomen(updatedCart);
-    localStorage.setItem('newCart', JSON.stringify(updatedCart));
+    const updatedCart = getRefrigrator.filter((_, i) => i !== index);
+    setGetRefrigrator(updatedCart);
+    localStorage.setItem('newRefrigratorCart', JSON.stringify(updatedCart));
   }
 
   return (
@@ -133,7 +132,7 @@ export function CartSalonForWomen() {
                 <Input name="street" value={input.street} placeholder="Street" p={2} borderRadius="md" boxShadow="sm" onChange={handleChange} />
               </Box>
               <Input name="datetime" type="datetime-local" p={2} borderRadius="md" boxShadow="sm" onChange={handleChange} />
-              <Button  colorScheme="teal" size="lg" borderRadius="md" boxShadow="md" _hover={{ boxShadow: "lg" }} onClick={handleProceed}>
+              <Button colorScheme="teal" size="lg" borderRadius="md" boxShadow="md" _hover={{ boxShadow: "lg" }} onClick={handleProceed}>
                 Proceed Payment
               </Button>
             </Box>
@@ -141,7 +140,7 @@ export function CartSalonForWomen() {
         </Box>
         <Box flex="1" p={4} borderRadius="md" boxShadow="md" bg="gray.50">
           <Box overflowY="scroll" height={{ base: 'auto', md: '500px' }}>
-            {getSalonForWomen.map((ele, i) => (
+            {getRefrigrator.map((ele, i) => (
               <Box key={i} borderRadius="md" bg="white" boxShadow="md" p={4} mb={4}>
                 <Badge colorScheme="green" mb={2}>
                   PACKAGE
@@ -150,23 +149,31 @@ export function CartSalonForWomen() {
                   <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="500" mb={2}>
                     {ele.title}
                   </Text>
-                  <Button variant='ghost' colorScheme="red" onClick={() => handleDelete(i)}>Delete</Button>
+                  <Box textAlign="center" ml={4}>
+                
+                <Image 
+                  width={{ base: '60px', md: '80px', lg: '100px' }} 
+                  src={ele.image} 
+                  mb={2} 
+                  borderRadius="md"
+                  boxShadow="md"
+                />
+                     <Button variant='ghost' colorScheme="red" onClick={() => handleDelete(i)}>Delete</Button>
+                  </Box>
+                 
                 </Box>
                 <Text fontWeight="500" mb={2}>
                   ₹{ele.price.toLocaleString()}
                 </Text>
-                <Text  mb={2}>{ele.service?.waxing}</Text>
-                <Text mb={2}>{ele.service?.Facial}</Text>
-                <Text mb={2}>{ele.service?.faceCleansing}</Text>
-                <Text mb={2}>{ele.service?.pedicure}</Text>
-                <Text mb={2}>{ele.service?.facialHairRemoval}</Text>
+               
+                <Text >{ele.cover}</Text>
                 <AccordionTag />
               </Box>
             ))}
           </Box>
           <Box mt={4} bg="teal" p={{ base: 3, md: 5 }} color="white" borderRadius="md" boxShadow="md" textAlign="center">
             <Text fontSize={{ base: 'md', md: 'lg' }} fontWeight="bold">
-              Total: ₹{getSalonForWomen.reduce((acc, curr) => acc + Number(curr.price), 0).toLocaleString()}
+              Total: ₹{getRefrigrator.reduce((acc, curr) => acc + Number(curr.price), 0).toLocaleString()}
             </Text>
           </Box>
         </Box>
@@ -180,7 +187,7 @@ export function CartSalonForWomen() {
           <ModalHeader>Payment Gate</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Input value={`₹${getSalonForWomen.reduce((acc, curr) => acc + Number(curr.price), 0).toLocaleString()}`} isReadOnly />
+            <Input value={`₹${getRefrigrator.reduce((acc, curr) => acc + Number(curr.price), 0).toLocaleString()}`} isReadOnly />
             <Button colorScheme="teal" mt={4} onClick={handlePaymentComplete}>Proceed to Payment</Button>
           </ModalBody>
         </ModalContent>
@@ -189,8 +196,12 @@ export function CartSalonForWomen() {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Payment Done</ModalHeader>
-          </ModalContent>
-         </Modal>
-         </>
-         )
+          <ModalCloseButton />
+          <ModalBody>
+            <Text>Your payment has been completed successfully!</Text>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </>
+  );
 }
