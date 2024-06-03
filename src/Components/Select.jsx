@@ -2,10 +2,11 @@ import { Select } from "@chakra-ui/react"
 export function SelectTag({name,handleChange}){
     return(
         <Select 
+        display={{base:'none',md:'flex',lg:'flex'}}
         name={name}
       color='gray' 
       placeholder="Select a location" 
-      w={{ base: '100%', md: 'auto' }} 
+      w={{ base: 'none', md: '300px' }} 
       mb={{ base: 3, md: 0 }}
       onChange={handleChange}
     >

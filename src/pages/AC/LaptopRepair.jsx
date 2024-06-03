@@ -2,9 +2,6 @@ import { Box, Text, Image, Badge, Button, ListItem,List } from "@chakra-ui/react
 import { Navbar } from "../../Components/Navbar";
 import { AccordionTag } from "../../Components/Accordion";
 import { useEffect, useState } from "react";
-
-import { acRepairPackage, selectAcRepair } from "../../dataBase/acRepair";
-import { CartComponentAcRepair } from "../../payment/CartComponentAcRepair";
 import { laptopPackage, selectLaptopRepair } from "../../dataBase/laptopRepair";
 import { CartComponentLaptopRepair } from "../../payment/CartComponentLaptopRepair";
 
@@ -23,7 +20,7 @@ export function LaptopRepair() {
   }, [getLaptopRepairCart]);
 
   return (
-    <>
+    <Box mt={{base:'130px'}}>
       <Navbar />
       <Box
         display={{ base: 'block', lg: 'flex' }}
@@ -38,7 +35,7 @@ export function LaptopRepair() {
             mb={{ base: 4, md: 8 }}
             color="gray.700"
           >
-            Make up
+          Laptop Repair
           </Text>
           <Box
             display="grid"
@@ -131,6 +128,6 @@ export function LaptopRepair() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }

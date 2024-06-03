@@ -21,7 +21,7 @@ export function WaterPurifier() {
   }, [waterPurifierCart]);
 
   return (
-    <>
+    <Box mt={{base:'130px'}}>
       <Navbar />
       <Box
         display={{ base: 'block', lg: 'flex' }}
@@ -148,6 +148,6 @@ export function WaterPurifier() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }

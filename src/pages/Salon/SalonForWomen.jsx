@@ -20,7 +20,7 @@ export function SalonForWomen() {
   }, [cart]);
 
   return (
-    <>
+    <Box mt={{base:'130px'}}>
       <Navbar />
       <Box
         id="Box"
@@ -145,7 +145,7 @@ export function SalonForWomen() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
 

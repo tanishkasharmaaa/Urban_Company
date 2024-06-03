@@ -20,7 +20,7 @@ export function Refrigrator() {
   }, [refrigratorCart]);
 
   return (
-    <>
+    <Box mt={{base:'130px'}}>
       <Navbar />
       <Box
         display={{ base: 'block', lg: 'flex' }}
@@ -35,7 +35,7 @@ export function Refrigrator() {
             mb={{ base: 4, md: 8 }}
             color="gray.700"
           >
-           Plumber
+          Refrigrators
           </Text>
           <Box
             display="grid"
@@ -157,6 +157,6 @@ export function Refrigrator() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }

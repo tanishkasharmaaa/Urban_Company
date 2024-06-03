@@ -21,7 +21,7 @@ export function Electrician() {
   }, [electricianCart]);
 
   return (
-    <>
+    <Box mt={{base:'130px'}}>
       <Navbar />
       <Box
         display={{ base: 'block', lg: 'flex' }}
@@ -147,6 +147,6 @@ export function Electrician() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }

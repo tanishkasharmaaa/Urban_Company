@@ -20,7 +20,7 @@ onOpen()
 }
 
     return(
-        <div style={{marginTop:'80px'}}>
+        <Box mt={{base:'120px'}}>
         <Navbar/>
         <Box display='flex' gap={{ base: '4', md: '10%' }} flexDirection={{ base: 'column', md: 'row' }} p={5}>
       <Box flex='1'>
@@ -222,13 +222,13 @@ onOpen()
         mb={8}
       >
         <Box mb={{ base: 8, md: 0 }} mr={{ base: 0, md: 8 }}>
-          <Image 
+        <Box display={{base:'flex'}} justifyContent={{base:'center'}}><Image 
             src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_category/w_144,dpr_2,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/supply/customer-app-supply/1648471968852-1f2b01.png" 
             alt="Company Logo" 
             h="auto" 
-            w={{ base: "100%", md: "200px" }} 
+            w={{ base: "200px", md: "200px" }} 
             mb={{ base: 4, md: 0 }} 
-          />
+          /></Box>  
           
           <Box>
             <Heading as="h2" fontSize={{ base: "xl", md: "2xl" }} mb={4}>Company</Heading>
@@ -305,6 +305,6 @@ onOpen()
       </Modal>
               )
             }
-        </div>
+        </Box>
     )
 }

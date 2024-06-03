@@ -20,7 +20,7 @@ export function HouseCleaning() {
   }, [houseCleaningCart]);
 
   return (
-    <>
+    <Box mt={{base:'130px'}}>
       <Navbar />
       <Box
         display={{ base: 'block', lg: 'flex' }}
@@ -149,6 +149,6 @@ export function HouseCleaning() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }

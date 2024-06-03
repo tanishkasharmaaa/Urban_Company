@@ -21,7 +21,7 @@ export function MakeUp() {
   }, [makeUpCart]);
 
   return (
-    <>
+    <Box mt={{base:'130px'}}>
       <Navbar />
       <Box
         display={{ base: 'block', lg: 'flex' }}
@@ -146,6 +146,6 @@ export function MakeUp() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }

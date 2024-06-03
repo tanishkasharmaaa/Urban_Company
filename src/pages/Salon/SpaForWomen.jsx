@@ -20,7 +20,7 @@ export function SpaForWomen() {
   }, [spaCart]);
 
   return (
-    <>
+    <Box mt={{base:'130px'}}>
       <Navbar />
       <Box
         display={{ base: 'block', lg: 'flex' }}
@@ -145,7 +145,7 @@ export function SpaForWomen() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
 

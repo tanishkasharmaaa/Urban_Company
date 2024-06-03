@@ -7,6 +7,7 @@ import { SelectTag } from "../Components/Select";
 import { LoginModal } from "./LoginModal";
 import { SearchButtons } from "./SearchButtons";
 import { FaCircleUser } from "react-icons/fa6";
+import { useRef } from "react";
 
 export function Navbar() {
   let navigate = useNavigate();
@@ -17,6 +18,14 @@ export function Navbar() {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isLoginOpen, onOpen: onLoginOpen, onClose: onLoginClose } = useDisclosure();
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -76,6 +85,7 @@ export function Navbar() {
         position='fixed' 
         top={0} 
         zIndex={1000}
+        
       >
         <Box mb={{ base: 3, md: 0 }}>
           <Link to='/'>
@@ -83,27 +93,29 @@ export function Navbar() {
           </Link>
         </Box>
         <Box 
-          display={{base:'flex',md:'flex',lg:'flex'}} 
+          display={{base:'block',md:'flex',lg:'flex'}} 
           flexDirection={{ base: 'row', md: 'row' }} 
           justifyContent='space-around' 
           alignItems='center' 
           w={{ base: '100%', md: '60%' }} 
         >
           <Box><SelectTag /></Box>
-          <Box><Input onClick={() => onOpen()}
-            placeholder="Search here..." 
-            mx={{ base: 0, md: 3 }} 
-            w={{ base: '100%', md: '300px' }} 
-            mb={{ base: 3, md: 0 }}
-          /></Box>
-          
+          <Box>
+            <Input 
+              onClick={onOpen}
+              placeholder="Search here..." 
+              mx={{ base: 0, md: 3 }} 
+              w={{ base: '100%', md: '300px' }} 
+              mb={{ base: 3, md: 0 }}
+            />
+          </Box>
         </Box>
         <Box>
           {isLoggedIn === '' ? (
-            <Button onClick={() => handleModalDisplay()} colorScheme='gray' variant='outline' w={{ base: '100%', md: 'auto' }}>Login</Button>
+            <Button onClick={handleModalDisplay} colorScheme='gray' variant='outline' w={{ base: '100%', md: 'auto' }}>Login</Button>
           ) : (
             <Menu>
-              <MenuButton borderRadius='25px' as={Button}>
+              <MenuButton borderRadius='25px' as={Button} display={{base:'none'}}>
                 <FaCircleUser />
               </MenuButton>
               <MenuList>
@@ -121,7 +133,14 @@ export function Navbar() {
           <ModalCloseButton />
           <ModalBody>
             <Box>
-              <Input onChange={handleSearch} placeholder="Search service e.g. : AcRepair" />
+              <Input
+                ref={inputRef}
+                onChange={handleSearch}
+                placeholder="Search service e.g. : AcRepair"
+                focusBorderColor="teal.500"
+                borderColor="gray.300"
+                _hover={{ borderColor: "gray.400" }}
+              />
               <br />
               <Box
                 height={{ base: "150px", md: "200px" }} 
@@ -132,7 +151,7 @@ export function Navbar() {
                 p={4} 
               >
                 {filteredData.length === 0 ? (
-                  <Text>No results found</Text>
+                  <Text></Text>
                 ) : (
                   filteredData.map((ele, i) => (
                     <Box onClick={() => navigate(`${ele.link}`)}
@@ -161,8 +180,7 @@ export function Navbar() {
               <SearchButtons nav={navigate} />
             </Box>
           </ModalBody>
-          <ModalFooter>
-          </ModalFooter>
+          <ModalFooter />
         </ModalContent>
       </Modal>
 

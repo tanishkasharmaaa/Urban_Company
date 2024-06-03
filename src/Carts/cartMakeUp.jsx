@@ -173,23 +173,44 @@ export function CartMakeUp() {
       {display && (
         <LoginModal open={isLoginOpen} close={onLoginClose} />
       )}
-      <Modal isOpen={isOpen} onClose={onClose}>
+       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Payment Gate</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Input value={`₹${getMakeUp.reduce((acc, curr) => acc + Number(curr.price), 0).toLocaleString()}`} isReadOnly />
-            <Button colorScheme="teal" mt={4} onClick={handlePaymentComplete}>Proceed to Payment</Button>
+        <ModalContent borderRadius="lg" boxShadow="lg">
+          <ModalHeader bg="teal.500" color="white" borderTopRadius="lg">
+            Payment Gate
+          </ModalHeader>
+          <ModalCloseButton color="white" />
+          <ModalBody p={6}>
+            <Input 
+              value={`₹${getMakeUp.reduce((acc, curr) => acc + Number(curr.price), 0).toLocaleString()}`} 
+              isReadOnly 
+              fontSize="lg"
+              textAlign="center"
+              borderColor="teal.500"
+              _hover={{ borderColor: "teal.600" }}
+              mb={4}
+            />
+            <Button 
+              colorScheme="teal" 
+              size="lg" 
+              width="full" 
+              onClick={handlePaymentComplete}
+              _hover={{ bg: "teal.600" }}
+            >
+              Proceed to Payment
+            </Button>
           </ModalBody>
         </ModalContent>
       </Modal>
+
       <Modal isOpen={isCompletion} onClose={onCompletionClose}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Payment Done</ModalHeader>
-          </ModalContent>
-         </Modal>
+        <ModalContent borderRadius="lg" boxShadow="lg">
+          <ModalHeader bg="green.500" color="white" borderTopRadius="lg">
+            Payment Done
+          </ModalHeader>
+        </ModalContent>
+      </Modal>
          </>
          )
 }

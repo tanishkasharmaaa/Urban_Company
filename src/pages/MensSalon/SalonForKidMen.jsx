@@ -21,7 +21,7 @@ export function SalonForKidMen() {
   }, [salonForKidMenCart]);
 
   return (
-    <>
+    <Box mt={{base:'130px'}}>
       <Navbar />
       <Box
         display={{ base: 'block', lg: 'flex' }}
@@ -149,6 +149,6 @@ export function SalonForKidMen() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }

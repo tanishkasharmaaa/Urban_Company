@@ -20,7 +20,7 @@ export function MassageForMen() {
   }, [massageCart]);
 
   return (
-    <>
+    <Box mt={{base:'130px'}}>
       <Navbar />
       <Box
         display={{ base: 'block', lg: 'flex' }}
@@ -144,6 +144,6 @@ export function MassageForMen() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }

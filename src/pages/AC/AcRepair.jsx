@@ -22,7 +22,7 @@ export function AcRepair() {
   }, [getAcRepairCart]);
 
   return (
-    <>
+    <Box mt={{base:'130px'}}>
       <Navbar />
       <Box
         display={{ base: 'block', lg: 'flex' }}
@@ -130,6 +130,6 @@ export function AcRepair() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }

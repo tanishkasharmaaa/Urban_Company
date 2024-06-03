@@ -20,7 +20,7 @@ export function Sofa() {
   }, [sofaCart]);
 
   return (
-    <>
+    <Box mt={{base:'130px'}}>
       <Navbar />
       <Box
         display={{ base: 'block', lg: 'flex' }}
@@ -155,7 +155,7 @@ export function Sofa() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
 
