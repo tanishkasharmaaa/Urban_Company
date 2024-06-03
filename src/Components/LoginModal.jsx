@@ -73,7 +73,7 @@ onProceedClose()
           <ModalCloseButton />
           <ModalBody>
           
-        <Input type="tel" onChange={handlePhoneNumber}  placeholder="Enter your Number"/>
+        <Input type="tel" onChange={handlePhoneNumber}  placeholder="Enter your Phone number"/>
             <br /><br />
   <label>
         <Checkbox defaultChecked/> Get oder updates on WhatsApp</label>
