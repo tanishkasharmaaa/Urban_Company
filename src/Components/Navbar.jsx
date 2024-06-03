@@ -115,7 +115,7 @@ export function Navbar() {
             <Button onClick={handleModalDisplay} colorScheme='gray' variant='outline' w={{ base: '100%', md: 'auto' }}>Login</Button>
           ) : (
             <Menu>
-              <MenuButton borderRadius='25px' as={Button} display={{base:'none'}}>
+              <MenuButton borderRadius='25px' as={Button} display={{base:'none',md:'block',lg:'block'}}>
                 <FaCircleUser />
               </MenuButton>
               <MenuList>
