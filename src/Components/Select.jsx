@@ -2,7 +2,7 @@ import { Select } from "@chakra-ui/react"
 export function SelectTag({name,handleChange}){
     return(
         <Select 
-        display={{base:'none',md:'flex',lg:'flex'}}
+        
         name={name}
       color='gray' 
       placeholder="Select a location" 

@@ -99,7 +99,7 @@ export function Navbar() {
           alignItems='center' 
           w={{ base: '100%', md: '60%' }} 
         >
-          <Box><SelectTag /></Box>
+          <Box display={{base:'none',md:'flex',lg:'flex'}}><SelectTag /></Box>
           <Box>
             <Input 
               onClick={onOpen}
