@@ -48,4 +48,7 @@ https://github.com/tanishkasharmaaa/Urban_Company
 
 ##Website Images
 
-![Alt text](./src/images/image%201.png)
+![Alt text](./src/images/image%204.png)
+![Alt text](./src/images/image%202.png)
+![Alt text](./src/images/image%202.png)
+![Alt text](./src/images/image%203.png)
