@@ -24,7 +24,7 @@ export function CartComponent({ cart, setCart }) {
       {cart.length == 0 ? (
         <Box >
           <Box display='flex' justifyContent='center'>
-          <Image w='50%' src='https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/512x512/shopping_cart.png' />
+          <Image w='50%' src='https://cdn-icons-png.flaticon.com/512/6792/6792962.png' />
           </Box>
           <Box display='flex' justifyContent='center'><Text fontSize='25px'>Add something to cart</Text></Box>
          

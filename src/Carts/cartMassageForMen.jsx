@@ -87,7 +87,7 @@ export function CartMassageForMen() {
   function handleDelete(index) {
     const updatedCart = getMassageForMen.filter((_, i) => i !== index);
    setGetMassageForMen(updatedCart);
-    localStorage.setItem('newCart', JSON.stringify(updatedCart));
+    localStorage.setItem('newMassageForMen', JSON.stringify(updatedCart));
   }
 
   return (

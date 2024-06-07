@@ -1,4 +1,4 @@
-import { Box, Button, Input, ModalOverlay, Modal, ModalContent, ModalHeader, ModalBody, ModalCloseButton, Text, ModalFooter, useDisclosure, Divider, MenuButton, MenuItem, MenuList, Menu } from "@chakra-ui/react";
+import { Box,Select, Button, Input, ModalOverlay, Modal, ModalContent, ModalHeader, ModalBody, ModalCloseButton, Text, ModalFooter, useDisclosure, Divider, MenuButton, MenuItem, MenuList, Menu } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { Image } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
@@ -99,7 +99,38 @@ export function Navbar() {
           alignItems='center' 
           w={{ base: '100%', md: '60%' }} 
         >
-          <Box display={{base:'none',md:'flex',lg:'flex'}}><SelectTag /></Box>
+          <Box display={{base:'none',md:'flex',lg:'flex'}}>
+          <Select 
+        
+        name={name}
+      color='gray' 
+      placeholder="Select a location" 
+      w={{ base: 'none', md: '300px'}} 
+      mb={{ base: 3, md: 0 }}
+      
+    >
+      <option value="Connaught Place">Connaught Place</option>
+      <option value="Rajouri Garden">Rajouri Garden</option>
+      <option value="Chandni Chowk">Chandni Chowk</option>
+      <option value="Hauz Khas Village">Hauz Khas Village</option>
+      <option value="Saket">Saket</option>
+      <option value="Karol Bagh">Karol Bagh</option>
+      <option value="Lajpat Nagar">Lajpat Nagar</option>
+      <option value="Greater Kailash">Greater Kailash</option>
+      <option value="Janpath">Janpath</option>
+      <option value="Sadar Bazaar">Sadar Bazaar</option>
+      <option value="Defence Colony">Defence Colony</option>
+      <option value="Dwarka">Dwarka</option>
+      <option value="Vasant Kunj">Vasant Kunj</option>
+      <option value="Paharganj">Paharganj</option>
+      <option value="Khan Market">Khan Market</option>
+      <option value="Nehru Place">Nehru Place</option>
+      <option value="Shahdara">Shahdara</option>
+      <option value="Rohini">Rohini</option>
+      <option value="Noida">Noida</option>
+      <option value="Siri Fort">Siri Fort</option>
+    </Select>
+            </Box>
           <Box>
             <Input 
               onClick={onOpen}

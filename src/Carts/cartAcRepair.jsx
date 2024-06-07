@@ -88,7 +88,7 @@ export function CartAcRepair() {
   function handleDelete(index) {
     const updatedCart = getAcRepair.filter((_, i) => i !== index);
    setGetAcRepair(updatedCart);
-    localStorage.setItem('newCart', JSON.stringify(updatedCart));
+    localStorage.setItem('newAcRepairCart', JSON.stringify(updatedCart));
   }
 
   return (

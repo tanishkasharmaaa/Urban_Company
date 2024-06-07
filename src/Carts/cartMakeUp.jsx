@@ -87,7 +87,7 @@ export function CartMakeUp() {
   function handleDelete(index) {
     const updatedCart = getMakeUp.filter((_, i) => i !== index);
    setGetMakeUp(updatedCart);
-    localStorage.setItem('newCart', JSON.stringify(updatedCart));
+    localStorage.setItem('newMakeUp', JSON.stringify(updatedCart));
   }
 
   return (

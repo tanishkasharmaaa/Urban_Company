@@ -87,7 +87,7 @@ export function CartSpaForWomen() {
   function handleDelete(index) {
     const updatedCart = getSpaForWomen.filter((_, i) => i !== index);
    setGetSpaForWomen(updatedCart);
-    localStorage.setItem('newCart', JSON.stringify(updatedCart));
+    localStorage.setItem('newSpaForWomen', JSON.stringify(updatedCart));
   }
 
   return (
