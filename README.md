@@ -53,4 +53,4 @@ This project is a clone of the Urban Company website, offering users the ability
 ![Alt text](./src/images/image%203.png)
 
 ## Contact
-Project Link :[text](https://urban-company-liart.vercel.app/MakeUpStudio)
+Project Link :[text](https://urban-company-liart.vercel.app/)
