@@ -25,7 +25,7 @@ export function CartComponentMakeUp({ cart, setCart }) {
       {cart.length == 0 ? (
         <Box >
           <Box display='flex' justifyContent='center'>
-          <Image w='50%' src='https://cdn-icons-png.flaticon.com/512/6792/6792962.png' />
+          <Image w='40%' src='https://cdn-icons-png.flaticon.com/512/6792/6792962.png' />
           </Box>
           <Box display='flex' justifyContent='center'><Text fontSize='25px'>Add something to cart</Text></Box>
          

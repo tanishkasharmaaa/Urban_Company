@@ -1,4 +1,4 @@
-import { Box, Text, Image, Badge, Button, ListItem,List } from "@chakra-ui/react";
+import { Box, Text, Image, Badge, Button, ListItem,List, SimpleGrid } from "@chakra-ui/react";
 import { Navbar } from "../../Components/Navbar";
 import { AccordionTag } from "../../Components/Accordion";
 import { useEffect, useState } from "react";
@@ -95,7 +95,7 @@ export function MassageForMen() {
             maxW={{ base: "100%", lg: "auto" }}
             objectFit="cover"
           />
-          <Box display="flex" flexDirection={{ base: "column", lg: "row" }} mt={{ base: 4, lg: 8 }}>
+          <SimpleGrid columns={{base:1,md:2}} mt={{ base: 4, lg: 8 }}>
             <Box p={5}  flex="1"
   alignItems="center"
   overflowY="scroll"
@@ -140,8 +140,9 @@ export function MassageForMen() {
                 </Box>
               ))}
             </Box>
-            <CartComponentMassageForMen cart={massageCart} setCart={setMassageCart} />
-          </Box>
+            <Box bg={'lightgray'}> <CartComponentMassageForMen cart={massageCart} setCart={setMassageCart} /></Box>
+           
+          </SimpleGrid>
         </Box>
       </Box>
     </Box>

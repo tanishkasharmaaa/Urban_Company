@@ -1,4 +1,4 @@
-import { Box, Text, Image, Badge, Button, ListItem,List } from "@chakra-ui/react";
+import { Box, Text, Image, Badge, Button, ListItem,List, SimpleGrid } from "@chakra-ui/react";
 import { Navbar } from "../../Components/Navbar";
 import { AccordionTag } from "../../Components/Accordion";
 import { useEffect, useState } from "react";
@@ -87,7 +87,7 @@ export function AcRepair() {
             maxW={{ base: "100%", lg: "auto" }}
             objectFit="cover"
           />
-          <Box display="flex" flexDirection={{ base: "column", lg: "row" }} mt={{ base: 1, lg: 1 }}>
+          <SimpleGrid columns={{base:1,md:2}} mt={{ base: 1, lg: 1 }}>
             <Box p={5} overflowY="auto" height={{ base: "300px", md: "490px" }} marginTop={{ base: "30px", md: "50px" }}>
               {acRepairPackage.map((ele, i) => (
                 <Box key={i} borderRadius="md" bg="white" boxShadow="md" p={4} mb={4}>
@@ -126,8 +126,11 @@ export function AcRepair() {
                 </Box>
               ))}
             </Box>
-            <CartComponentAcRepair cart={getAcRepairCart} setCart={setGetAcRepairCart} />
-          </Box>
+            <Box bg={'lightGrey'}>
+               <CartComponentAcRepair cart={getAcRepairCart} setCart={setGetAcRepairCart} />
+            </Box>
+           
+          </SimpleGrid>
         </Box>
       </Box>
     </Box>

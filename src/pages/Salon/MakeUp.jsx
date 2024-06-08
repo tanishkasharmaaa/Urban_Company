@@ -1,4 +1,4 @@
-import { Box, Text, Image, Badge, Button, ListItem,List } from "@chakra-ui/react";
+import { Box, Text, Image, Badge, Button, ListItem,List, SimpleGrid } from "@chakra-ui/react";
 import { Navbar } from "../../Components/Navbar";
 import { AccordionTag } from "../../Components/Accordion";
 import { useEffect, useState } from "react";
@@ -96,54 +96,38 @@ export function MakeUp() {
             maxW={{ base: "100%", lg: "auto" }}
             objectFit="cover"
           />
-          <Box display="flex" flexDirection={{ base: "column", lg: "row" }} mt={{ base: 4, lg: 8 }}>
-            <Box p={5}  flex="1"
-  alignItems="center"
-  overflowY="scroll"
-  height={{ base: '500px', md: '600px' }}
-  css={{
-    '&::-webkit-scrollbar': {
-      display: 'none',
-    },
-    '-ms-overflow-style': 'none',  
-    'scrollbar-width': 'none',  
-}}>
-              {makeUpPackage.map((ele, i) => (
-                <Box key={i} borderRadius="md" bg="white" boxShadow="md" p={4} mb={4}>
-                  <Badge colorScheme="green" mb={2}>
-                    PACKAGE
-                  </Badge>
-                  <Box display='flex' justifyContent='space-between'>
-                    <Text fontSize="2xl" fontWeight="500" mb={2}>
-                      {ele.title}
-                    </Text>
-                    <Button
-                      colorScheme="teal"
-                      variant='ghost'
-                      size="lg"
-                      borderRadius="md"
-                      boxShadow="md"
-                      _hover={{ boxShadow: "lg" }}
-                      onClick={() => handleAddToCart(ele)}
-                    >
-                      Add to Cart
-                    </Button>
-                  </Box>
-                  <Text fontWeight="500" mb={2}>
-                    ₹{ele.price.toLocaleString()}
-                  </Text>
-                  <Text>{ele.time}</Text>
-<List>
-                  <ListItem color='grey' mb={2}>{ele.service?.first}</ListItem>
-                  <ListItem color='grey' mb={2}>{ele.service?.second}</ListItem>
-                  <ListItem color='grey' mb={2}>{ele.service?.third}</ListItem>
-                 </List> 
-                  <AccordionTag />
-                </Box>
-              ))}
+         <SimpleGrid columns={{ base: 1, lg: 2 }} mt={{ base: 4, lg: 8 }} spacing={8}>
+      <Box p={5} alignItems="center" overflowY="scroll" height={{ base: '500px', md: '600px' }} w={{ base: '100%', md: '400px' }} css={{ '&::-webkit-scrollbar': { display: 'none' }, '-ms-overflow-style': 'none', 'scrollbar-width': 'none' }}>
+        {makeUpPackage.map((ele, i) => (
+          <Box key={i} borderRadius="md" bg="white" boxShadow="md" p={4} mb={4}>
+            <Badge colorScheme="green" mb={2}>
+              PACKAGE
+            </Badge>
+            <Box display='flex' justifyContent='space-between' alignItems='center'>
+              <Text fontSize="2xl" fontWeight="500" mb={2}>
+                {ele.title}
+              </Text>
+              <Button colorScheme="teal" variant='ghost' size="lg" borderRadius="md" boxShadow="md" _hover={{ boxShadow: "lg" }} onClick={() => handleAddToCart(ele)} width='150px'>
+                Add to Cart
+              </Button>
             </Box>
-            <CartComponentMakeUp cart={makeUpCart} setCart={setGetMakeUp} />
+            <Text fontWeight="500" mb={2}>
+              ₹{ele.price.toLocaleString()}
+            </Text>
+            <Text>{ele.time}</Text>
+            <List>
+              <ListItem color='gray' mb={2}>{ele.service?.first}</ListItem>
+              <ListItem color='gray' mb={2}>{ele.service?.second}</ListItem>
+              <ListItem color='gray' mb={2}>{ele.service?.third}</ListItem>
+            </List> 
+            <AccordionTag />
           </Box>
+        ))}
+      </Box>
+      <Box bg='lightgray' p={5} alignItems="center" overflowY="scroll" height={{ base: '500px', md: '600px' }}>
+        <CartComponentMakeUp cart={makeUpCart} setCart={setGetMakeUp} />
+      </Box>
+    </SimpleGrid>
         </Box>
       </Box>
     </Box>

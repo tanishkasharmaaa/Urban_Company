@@ -1,4 +1,4 @@
-import { Box, Text, Image, Badge, Button } from "@chakra-ui/react";
+import { Box, Text, Image, Badge, Button, SimpleGrid } from "@chakra-ui/react";
 import { Navbar } from "../../Components/Navbar";
 import { AccordionTag } from "../../Components/Accordion";
 import { useEffect, useState } from "react";
@@ -89,7 +89,7 @@ export function HouseCleaning() {
 }}
 >
             <Image src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_category/w_829,dpr_2,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/luminosity/1695987154340-42756a.jpeg"/>
-          <Box display="flex" flexDirection={{ base: "column", lg: "row" }} mt={{ base: 4, lg: 8 }}>
+          <SimpleGrid columns={{base:1,md:2}} mt={{ base: 4, lg: 8 }}>
             <Box p={5}  flex="1"
   alignItems="center"
   overflowY="scroll"
@@ -144,9 +144,9 @@ export function HouseCleaning() {
               ))}
             </Box>
             <Box flex={{ base: "1", lg: "0 0 30%" }} mt={{ base: 4, lg: 0 }} ml={{ lg: 4 }}>
-              <CartComponentHouseCleaning cart={houseCleaningCart} setCart={setHouseCleaningCart} />
+             <Box bg='lightgray'><CartComponentHouseCleaning cart={houseCleaningCart} setCart={setHouseCleaningCart} /></Box> 
             </Box>
-          </Box>
+          </SimpleGrid>
         </Box>
       </Box>
     </Box>

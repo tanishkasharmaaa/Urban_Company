@@ -1,4 +1,4 @@
-import { Box, Text, Image, Badge, Button } from "@chakra-ui/react";
+import { Box, Text, Image, Badge, Button, SimpleGrid } from "@chakra-ui/react";
 import { Navbar } from "../../Components/Navbar";
 import { selectService, packages } from "../../dataBase/SalonForWomen";
 import { AccordionTag } from "../../Components/Accordion";
@@ -95,7 +95,7 @@ export function SalonForWomen() {
             maxW={{ base: "100%", lg: "auto" }}
             objectFit="cover"
           />
-          <Box display="flex" flexDirection={{ base: "column", lg: "row" }} mt={{ base: 4, lg: 8 }}>
+          <SimpleGrid columns={{base:1,md:2}} mt={{ base: 4, lg: 8 }}>
             <Box p={5}  flex="1"
   alignItems="center"
   overflowY="scroll"
@@ -141,8 +141,9 @@ export function SalonForWomen() {
                 </Box>
               ))}
             </Box>
-            <CartComponent cart={cart} setCart={setCart} />
-          </Box>
+            <Box bg='lightgray'><CartComponent cart={cart} setCart={setCart} /></Box>
+            
+          </SimpleGrid>
         </Box>
       </Box>
     </Box>

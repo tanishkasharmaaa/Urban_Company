@@ -26,8 +26,7 @@ This project is a clone of the Urban Company website, offering users the ability
 ## Installation
 
 1. Clone the repo
-   ```sh
-https://github.com/tanishkasharmaaa/Urban_Company
+    https://github.com/tanishkasharmaaa/Urban_Company
 
 ##Usage
 1. Open your browser and go to http://localhost:3000.
@@ -52,3 +51,6 @@ https://github.com/tanishkasharmaaa/Urban_Company
 ![Alt text](./src/images/image%202.png)
 ![Alt text](./src/images/image%201.png)
 ![Alt text](./src/images/image%203.png)
+
+## Contact
+Project Link :[text](https://urban-company-liart.vercel.app/MakeUpStudio)
